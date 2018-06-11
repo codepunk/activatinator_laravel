@@ -1,0 +1,43 @@
+{
+    "name": "codepunk/activatinator",
+    "description": "Package for adding user activation on top of Laravel's 'Auth' framework",
+    "keywords": ["auth", "activation", "verification", "laravel"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Scott Slater",
+            "email": "scott@codepunk.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "orchestra/testbench": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codepunk\\Activatinator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codepunk\\Activatinator\\Providers\\ActivatinatorServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php artisan make:auth",
+            "@php artisan migrate"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=public --force"
+        ]
+    }
+}
