@@ -91,7 +91,7 @@ convention.
    
    * Update the following:
      
-     ```
+     ```php
      class User extends Authenticatable
      ```
      
