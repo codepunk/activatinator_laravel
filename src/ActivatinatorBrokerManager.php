@@ -106,7 +106,7 @@ class ActivatinatorBrokerManager implements FactoryContract
      */
     protected function getConfig($name)
     {
-        return $this->app['config']["codepunk-activatinator.activations.{$name}"];
+        return $this->app['config']["codepunk.activatinator.activations.{$name}"];
     }
 
     /**
@@ -116,7 +116,7 @@ class ActivatinatorBrokerManager implements FactoryContract
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']['codepunk-activatinator.defaults.activations'];
+        return $this->app['config']['codepunk.activatinator.defaults.activations'];
     }
 
     /**
@@ -127,7 +127,7 @@ class ActivatinatorBrokerManager implements FactoryContract
      */
     public function setDefaultDriver($name)
     {
-        $this->app['config']['codepunk-activatinator.defaults.activations'] = $name;
+        $this->app['config']['codepunk.activatinator.defaults.activations'] = $name;
     }
 
     /**
