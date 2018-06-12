@@ -17,7 +17,7 @@ are also provided by the Activatinator.
 The over-syllabic "Activatinator" is a shout-out to Heinz Doofenshmirtz, the villain
 in the "Phineas and Ferb" cartoon series. According to the 
 [Phineas and Ferb Wiki](http://phineasandferb.wikia.com/wiki/List_of_Doofenshmirtz%27s_schemes_and_inventions), 
-"Doofenshmirtz's schemes and inventions, primarily known as "Inators," are plans and 
+"Doofenshmirtz's schemes and inventions, primarily known as 'Inators,' are plans and 
 devices created by Dr. Heinz Doofenshmirtz as a means of dominating and taking over 
 the Tri-State Area or other locations."
 
