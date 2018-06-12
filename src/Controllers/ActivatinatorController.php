@@ -5,7 +5,7 @@ namespace Codepunk\Activatinator\Controllers;
 use App\Http\Controllers\Controller;
 use Codepunk\Activatinator\ActivatesUsers;
 
-class ActivateController extends Controller
+class ActivatinatorController extends Controller
 {
     use ActivatesUsers;
 

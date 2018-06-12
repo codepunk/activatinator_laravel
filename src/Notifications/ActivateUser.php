@@ -58,7 +58,7 @@ class ActivateUser extends Notification
         return (new MailMessage)
             ->subject(trans('codepunk::activatinator.email.subject'))
             ->line(trans('codepunk::activatinator.email.reason'))
-            ->action(trans('codepunk::activatinator.email.action'), url(config('app.url').route('activation.activate', $this->token, false)))
+            ->action(trans('codepunk::activatinator.email.action'), url(config('app.url').route('activatinator.activate', $this->token, false)))
             ->line(trans('codepunk::activatinator.email.disclaimer'));
     }
 

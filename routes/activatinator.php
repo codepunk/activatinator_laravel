@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web']], function () {
     Route::post('/activate/send', [
         'uses' => '\Codepunk\Activatinator\Controllers\SendActivationLinkController@sendActivationLinkEmail',
-        'as' => 'activation.activate.send',
+        'as' => 'activatinator.activate.send',
     ]);
 
     Route::get('/activate/{token}', [
-        'uses' => '\Codepunk\Activatinator\Controllers\ActivateController@showLoginForm',
-        'as' => 'activation.activate',
+        'uses' => '\Codepunk\Activatinator\Controllers\ActivatinatorController@showLoginForm',
+        'as' => 'activatinator.activate',
     ]);
 });
