@@ -29,7 +29,7 @@ class ActivatinatorServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'codepunk');
 
         $this->publishes([
-            __DIR__ . '/../../config/codepunk-activatinator.php' => config_path()],
+            __DIR__ . '/../../config/activatinator.php' => config_path('codepunk/activatinator.php')],
             'config');
 
         /*
