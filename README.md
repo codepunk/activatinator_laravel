@@ -104,7 +104,7 @@ convention.
    
    * Update the following:
         
-     ```
+     ```php
      use Notifiable;
      ```
      
@@ -124,7 +124,7 @@ convention.
      
    * Update the following:
      
-     ```
+     ```php
      use AuthenticatesUsers;
      ```
      
@@ -147,7 +147,7 @@ convention.
      
    * Update the following:
      
-     ```
+     ```php
      use RegistersUsers;
      ```
      
@@ -163,14 +163,14 @@ convention.
    
    Find these lines:
    
-   ```
+   ```html
    <div class="card-body">
        <form method="POST" action="{{ route('login') }}">
    ```
    
    And add the following line in between so it looks like this:
 
-   ```
+   ```html
    <div class="card-body">
        @include('codepunk::activatinator-alerts')
        <form method="POST" action="{{ route('login') }}">
