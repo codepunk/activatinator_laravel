@@ -33,7 +33,6 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "@php artisan make:auth",
             "@php artisan migrate"
         ],
         "post-update-cmd": [
