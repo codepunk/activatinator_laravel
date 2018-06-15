@@ -11,7 +11,7 @@ class ClearActivationsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'activatinator:clear-activations {name? : The name of the activatinator broker}';
+    protected $signature = 'codepunk:clear-activations {name? : The name of the activatinator broker}';
 
     /**
      * The console command description.
