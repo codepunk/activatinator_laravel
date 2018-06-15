@@ -45,6 +45,6 @@ class Activatinator extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'auth.activatinator';
+        return 'codepunk.activatinator';
     }
 }

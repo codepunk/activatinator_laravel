@@ -59,12 +59,12 @@ class ActivatinatorServiceProvider extends ServiceProvider
      * @return void
      */
     protected function registerActivatinatorBroker() {
-        $this->app->singleton('auth.activatinator', function (Application $app) {
+        $this->app->singleton('codepunk.activatinator', function (Application $app) {
             return new ActivatinatorBrokerManager($app);
         });
 
-        $this->app->bind('auth.activatinator.broker', function (Application $app) {
-            return $app->make('auth.activatinator')->broker();
+        $this->app->bind('codepunk.activatinator.broker', function (Application $app) {
+            return $app->make('codepunk.activatinator')->broker();
         });
     }
 
@@ -75,6 +75,6 @@ class ActivatinatorServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['auth.activatinator', 'auth.activatinator.broker'];
+        return ['codepunk.activatinator', 'codepunk.activatinator.broker'];
     }
 }
