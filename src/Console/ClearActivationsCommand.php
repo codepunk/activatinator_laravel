@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Console\Command;
-
 namespace Codepunk\Activatinator\Console;
+
+use Illuminate\Console\Command;
 
 class ClearActivationsCommand extends Command
 {
