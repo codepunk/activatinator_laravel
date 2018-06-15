@@ -2,6 +2,7 @@
 
 namespace Codepunk\Activatinator\Providers;
 
+use Codepunk\Activatinator\Console\ClearActivationsCommand;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Codepunk\Activatinator\ActivatinatorBrokerManager;
@@ -50,7 +51,19 @@ class ActivatinatorServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerCommands();
         $this->registerActivatinatorBroker();
+    }
+
+    /**
+     * Register Activatinator commands.
+     *
+     * @return void
+     */
+    protected function registerCommands() {
+        $this->commands([
+            ClearActivationsCommand::class
+        ]);
     }
 
     /**
