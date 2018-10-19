@@ -73,9 +73,17 @@ trait SendsActivationEmails
      */
     protected function sendActivationLinkResponse(Request $request, $response)
     {
-        $request->flashOnly('email');
-        return redirect($this->redirectPath())
-            ->with('status', trans($response));
+        if ($response->wantsJson()) {
+            return response()->json(
+                [ "message" => trans($response) ],
+                200,
+                [ 'Content-Type' => 'application/json' ]
+            );
+        } else {
+            $request->flashOnly('email');
+            return redirect($this->redirectPath())
+                ->with('status', trans($response));
+        }
     }
 
     /**
@@ -89,8 +97,16 @@ trait SendsActivationEmails
         /** @noinspection PhpUnusedParameterInspection */ Request $request,
         $response)
     {
-        return redirect($this->redirectPath())
-            ->withErrors(['email' => trans($response)]);
+        if ($response->wantsJson()) {
+            return response()->json(
+                [ "message" => trans($response) ],
+                400,
+                [ 'Content-Type' => 'application/json' ]
+            );
+        } else {
+            return redirect($this->redirectPath())
+                ->withErrors(['email' => trans($response)]);
+        }
     }
 
     /**
