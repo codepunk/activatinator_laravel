@@ -73,7 +73,7 @@ trait SendsActivationEmails
      */
     protected function sendActivationLinkResponse(Request $request, $response)
     {
-        if ($response->wantsJson()) {
+        if ($request->wantsJson()) {
             return response()->json(
                 [ "message" => trans($response) ],
                 200,
@@ -97,7 +97,7 @@ trait SendsActivationEmails
         /** @noinspection PhpUnusedParameterInspection */ Request $request,
         $response)
     {
-        if ($response->wantsJson()) {
+        if ($request->wantsJson()) {
             return response()->json(
                 [ "message" => trans($response) ],
                 400,
