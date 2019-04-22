@@ -43,13 +43,7 @@ trait ActivatesUsers
                 // Attempt to resolve token and activate user
                 return $this->activate($request, $token);
             } else {
-                // Log out and show "inactive" message
-                auth()->logout();
-                $request->flashOnly('email');
-                return redirect()
-                    ->back()
-                    ->with('warning', trans('codepunk::activatinator.inactive'))
-                    ->with('resend', true);
+                return $this->sendActivateFailedResponse($request, Activatinator::INACTIVE);
             }
         }
 

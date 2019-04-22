@@ -25,6 +25,13 @@ class Activatinator extends Facade
     const ACTIVATED = 'codepunk::activatinator.activated';
 
     /**
+     * Constant representing an inactive user.
+     *
+     * @var string
+     */
+    const INACTIVE = 'codepunk::activatinator.inactive';
+
+    /**
      * Constant representing the user not found response.
      *
      * @var string
