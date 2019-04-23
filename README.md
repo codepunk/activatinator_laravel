@@ -80,7 +80,7 @@ convention.
    ```bash
    $ php artisan migrate:refresh
    ```
-5. Make changes to `app/User.php`:
+5. Make changes to your `App\User` model:
    
    * Add the following `use` statements:
    
@@ -113,6 +113,12 @@ convention.
      ```php
      use Notifiable, Activable;
      ```
+     
+   * **NOTE**: If you are also using Laravel Passport to implement OAuth in your application, then we want the `oauth\token` endpoint to fail when the user has not yet been authenticated. To implement this behavior, add the `Codepunk\Activatinator\Traits\FindsForPassport` trait to your `App\User` model (in addition to Passport's `HasApiTokens` trait as described in the Laravel Passport documentation):
+   
+     ```php
+     use Notifiable, Activable, HasApiTokens, FindsForPassport;
+     ```  
 
 6. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
    
