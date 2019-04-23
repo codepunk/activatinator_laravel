@@ -117,10 +117,18 @@ trait ActivatesUsers
     protected function sendActivateFailedResponse(Request $request, $response)
     {
         auth()->logout();
-        return redirect()->route('login')
-            ->withInput($request->only('email'))
-            ->with('warning', trans($response))
-            ->with('resend', true);
+        if ($request->wantsJson()) {
+            return response()->json(
+                [ "message" => trans($response) ],
+                401,
+                [ 'Content-Type' => 'application/json' ]
+            );
+        } else {
+            return redirect()->route('login')
+                ->withInput($request->only('email'))
+                ->with('warning', trans($response))
+                ->with('resend', true);
+        }
     }
 
     /**
