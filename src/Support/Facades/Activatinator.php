@@ -18,6 +18,13 @@ class Activatinator extends Facade
     const ACTIVATION_LINK_SENT = 'codepunk::activatinator.sent';
 
     /**
+     * Constant representing a successfully sent activation link.
+     *
+     * @var string
+     */
+    const ACTIVATION_LINK_NOT_SENT = 'codepunk::activatinator.not_sent';
+
+    /**
      * Constant representing a successfully activated user.
      *
      * @var string

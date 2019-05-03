@@ -55,7 +55,7 @@ class ActivatinatorBroker implements ActivatinatorBrokerContract
         $user = $this->getUser($credentials);
 
         if (is_null($user)) {
-            return Activatinator::INVALID_USER;
+            return Activatinator::ACTIVATION_LINK_NOT_SENT;
         }
 
         // Once we have the reset token, we are ready to send the message out to this

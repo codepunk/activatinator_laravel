@@ -16,9 +16,14 @@ return [
     'active' => 'Your account is now active!',
     'inactive' => 'You need to activate your account. We sent you an activation code when you registered. ' .
         'Please check your email.',
+
+    // NOTE: Although the below message results from no user with the supplied email being found, we don't want to
+    // disclose whether a given email exists in our system. So whether an activation link was sent or not, we'll
+    // show the same message.
+    'not_sent' => 'An activation code has been sent! Please check your email.',
+
     'sent' => 'An activation code has been sent! Please check your email.',
     'token' => 'This activation token is expired or is invalid.',
-    'user' => 'An activation code has been sent! Please check your email.', // This is the message when a failure occurs. We don't want the user to know whether a supplied email has an account or not
 
     'email.subject' => 'Activate Your Codepunk Account',
 	'email.reason' => 'You are receiving this email because you registered a new account using this email address.',
