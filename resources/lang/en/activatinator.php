@@ -12,12 +12,13 @@ return [
     |
     */
 
+    'activate' => 'Log in now to activate your Codepunk account!',
     'active' => 'Your account is now active!',
     'inactive' => 'You need to activate your account. We sent you an activation code when you registered. ' .
-        'Please check your e-mail.',
-    'sent' => 'We sent you an activation code! Please check your e-mail.',
+        'Please check your email.',
+    'sent' => 'An activation code has been sent! Please check your email.',
     'token' => 'This activation token is expired or is invalid.',
-    'activate' => 'Log in now to activate your Codepunk account!',
+    'user' => 'An activation code has been sent! Please check your email.', // This is the message when a failure occurs. We don't want the user to know whether a supplied email has an account or not
 
     'email.subject' => 'Activate Your Codepunk Account',
 	'email.reason' => 'You are receiving this email because you registered a new account using this email address.',
