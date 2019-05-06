@@ -114,10 +114,10 @@ convention.
      use Notifiable, Activable;
      ```
      
-   * **NOTE**: If you are also using Laravel Passport to implement OAuth in your application, then we want the `oauth\token` endpoint to fail when the user has not yet been authenticated. To implement this behavior, add the `Codepunk\Activatinator\Traits\FindsForPassport` trait to your `App\User` model (in addition to Passport's `HasApiTokens` trait as described in the Laravel Passport documentation):
+   * **NOTE**: If you are also using Laravel Passport to implement OAuth in your application, then we want the `oauth\token` endpoint to fail when the user has not yet been authenticated. To implement this behavior, add the `Codepunk\Activatinator\Traits\ValidatesForPassport` trait to your `App\User` model (in addition to Passport's `HasApiTokens` trait as described in the Laravel Passport documentation):
    
      ```php
-     use Notifiable, Activable, HasApiTokens, FindsForPassport;
+     use Notifiable, Activable, HasApiTokens, ValidatesForPassport;
      ```  
 
 6. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
