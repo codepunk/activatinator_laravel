@@ -8,9 +8,9 @@
 
 namespace Codepunk\Activatinator\Traits;
 
-use Codepunk\Activatinator\Exceptions\InactiveUserException;
 use Codepunk\Activatinator\Support\Facades\Activatinator;
 use Illuminate\Support\Facades\Hash;
+use League\OAuth2\Server\Exception\OAuthServerException;
 
 /**
  * Trait ValidatesForPassport
@@ -30,11 +30,10 @@ trait ValidatesForPassport
         return $this->where($column, $usernameOrEmail)->first();
     }
 
-    // Rename FindsForPassport to AuthenticatesForPassport??
     /**
      * @param $password
      * @return bool
-     * @throws InactiveUserException
+     * @throws OAuthServerException
      */
     public function validateForPassportPasswordGrant($password)
     {
@@ -44,7 +43,7 @@ trait ValidatesForPassport
         } else if ($this->active) {
             return true;
         } else {
-            throw new InactiveUserException(
+            throw new OAuthServerException(
                 trans(Activatinator::INACTIVE),
                 9,
                 Activatinator::INACTIVE,
