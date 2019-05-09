@@ -44,9 +44,9 @@ trait ValidatesForPassport
             return true;
         } else {
             throw new OAuthServerException(
-                trans(Activatinator::INACTIVE),
+                trans(Activatinator::INACTIVE_USER),
                 9,
-                Activatinator::INACTIVE,
+                Activatinator::INACTIVE_USER,
                 401,
                 $this->email
             );

@@ -51,7 +51,7 @@ trait AuthenticatesUsers {
                 // Attempt to resolve token and activate user
                 return $this->activate($request, $token);
             } else {
-                return $this->sendActivateFailedResponse($request, Activatinator::INACTIVE);
+                return $this->sendActivateFailedResponse($request, Activatinator::INACTIVE_USER);
             }
         }
 
