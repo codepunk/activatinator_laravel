@@ -3,10 +3,15 @@
 namespace Codepunk\Activatinator;
 
 use Codepunk\Activatinator\Support\Facades\Activatinator;
+use Illuminate\Foundation\Auth\RegistersUsers as FrameworkRegistersUsers;
 use Illuminate\Http\Request;
 
-trait SendsActivationEmails
+trait RegistersUsers
 {
+    use FrameworkRegistersUsers;
+
+    private $headers = [ 'Content-Type' => 'application/json' ];
+
     /**
      * Get the post register redirect path.
      *
@@ -73,12 +78,8 @@ trait SendsActivationEmails
      */
     protected function sendActivationLinkResponse(Request $request, $response)
     {
-        if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                200,
-                [ 'Content-Type' => 'application/json' ]
-            );
+        if ($request->expectsJson()) {
+            return response()->json([ "message" => trans($response) ], 200, $this->headers);
         } else {
             $request->flashOnly('email');
             return redirect($this->redirectPath())
@@ -97,12 +98,8 @@ trait SendsActivationEmails
         /** @noinspection PhpUnusedParameterInspection */ Request $request,
         $response)
     {
-        if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                400,
-                [ 'Content-Type' => 'application/json' ]
-            );
+        if ($request->expectsJson()) {
+            return response()->json([ "message" => trans($response) ], 404, $this->headers);
         } else {
             return redirect($this->redirectPath())
                 ->withErrors(['email' => trans($response)]);
@@ -118,4 +115,5 @@ trait SendsActivationEmails
     {
         return Activatinator::broker();
     }
+
 }

@@ -2,12 +2,20 @@
 
 namespace Codepunk\Activatinator;
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers as FrameworkAuthenticatesUsers;
 use Codepunk\Activatinator\Events\UserActivated;
 use Codepunk\Activatinator\Support\Facades\Activatinator;
 use Illuminate\Http\Request;
 
-trait ActivatesUsers
-{
+trait AuthenticatesUsers {
+
+    use FrameworkAuthenticatesUsers {
+        FrameworkAuthenticatesUsers::authenticated as frameworkAuthenticated;
+        FrameworkAuthenticatesUsers::showLoginForm as frameworkShowLoginForm;
+    }
+
+    private $headers = [ 'Content-Type' => 'application/json' ];
+
     /**
      * Display the login view for the given token.
      *
@@ -15,16 +23,16 @@ trait ActivatesUsers
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string|null  $token
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function showLoginForm(Request $request, $token = null)
+    public function showLoginForm(/** @noinspection PhpUnusedParameterInspection */ Request $request, $token = null)
     {
         if (isset($token)) {
             session()->flash('token', $token);
             session()->flash('status', trans('codepunk::activatinator.activate'));
         }
 
-        return view('auth.login');
+        return $this->frameworkShowLoginForm();
     }
 
     /**
@@ -47,7 +55,7 @@ trait ActivatesUsers
             }
         }
 
-        return null;
+        return $this->frameworkAuthenticated($request, $user);
     }
 
     /**
@@ -102,7 +110,7 @@ trait ActivatesUsers
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    protected function sendActivateResponse($response)
+    protected function sendActivateResponse(/** @noinspection PhpUnusedParameterInspection */ $response)
     {
         return redirect($this->redirectPath());
     }
@@ -117,12 +125,8 @@ trait ActivatesUsers
     protected function sendActivateFailedResponse(Request $request, $response)
     {
         auth()->logout();
-        if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                401,
-                [ 'Content-Type' => 'application/json' ]
-            );
+        if ($request->expectsJson()) {
+            return response()->json([ "message" => trans($response) ], 401, $this->headers);
         } else {
             return redirect()->route('login')
                 ->withInput($request->only('email'))
@@ -141,4 +145,5 @@ trait ActivatesUsers
         /** @noinspection PhpUndefinedMethodInspection */
         return Activatinator::broker();
     }
+
 }
