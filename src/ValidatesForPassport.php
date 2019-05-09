@@ -6,7 +6,7 @@
  * Time: 1:58 PM
  */
 
-namespace Codepunk\Activatinator\Traits;
+namespace Codepunk\Activatinator;
 
 use Codepunk\Activatinator\Support\Facades\Activatinator;
 use Illuminate\Support\Facades\Hash;
