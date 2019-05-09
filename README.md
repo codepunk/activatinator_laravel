@@ -56,7 +56,7 @@ convention.
      In the `require` section of your project's `composer.json' file, add the following:
      
      ```bash
-     "codepunk/activatinator": "^1.2.1"
+     "codepunk/activatinator": "^1.3"
      ```
      
      (Or whatever the latest version happens to be)
