@@ -122,50 +122,47 @@ convention.
 
 6. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
    
-   * Add the following `use` statement:
+   * We want to use Codepunk's extension of AuthenticatesUsers. Update the following:
      
      ```php
-     use Codepunk\Activatinator\ActivatesUsers;
-     ```
-     
-   * Update the following:
-     
-     ```php
-     use AuthenticatesUsers;
+     use Illuminate\Foundation\Auth\AuthenticatesUsers;
      ```
      
      to this:
      
      ```php
-     use AuthenticatesUsers, ActivatesUsers {
-         ActivatesUsers::showLoginForm insteadof AuthenticatesUsers;
-         ActivatesUsers::authenticated insteadof AuthenticatesUsers;
-     }
+     use Codepunk\Activatinator\AuthenticatesUsers;
      ```
 
-6. Make changes to `app/Http/Controllers/Auth/RegisterController.php`:
+7. Make changes to `app/Http/Controllers/Auth/RegisterController.php`:
    
-   * Add the following `use` statement:
+   * We want to use Codepunk's extension of RegistersUsers. Update the following:
      
      ```php
-     use Codepunk\Activatinator\SendsActivationEmails;
-     ```
-     
-   * Update the following:
-     
-     ```php
-     use RegistersUsers;
+     use Illuminate\Foundation\Auth\RegistersUsers;
      ```
      
      to this:
      
      ```php
-     use RegistersUsers, SendsActivationEmails {
-         SendsActivationEmails::registered insteadof RegistersUsers;
-     }
+     use Codepunk\Activatinator\RegistersUsers;
      ```
 
-6. Make changes to `resources/views/auth/login.blade.php`:
+8. Make changes to `app/Http/Controllers/Auth/ForgotPasswordController.php`:
+   
+   * We want to use Codepunk's extension of SendsPasswordResetEmails. Update the following:
+     
+     ```php
+     use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+     ```
+     
+     to this:
+     
+     ```php
+     use Codepunk\Activatinator\SendsPasswordResetEmails;
+     ```
+
+9. Make changes to `resources/views/auth/login.blade.php`:
    
    Find these lines:
    
