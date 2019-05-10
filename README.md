@@ -120,7 +120,21 @@ convention.
      use Notifiable, Activable, HasApiTokens, ValidatesForPassport;
      ```  
 
-6. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
+6. Make changes to `app/Http/Controllers/Auth/ForgotPasswordController.php`:
+   
+   Update the following:
+     
+     ```php
+     use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+     ```
+     
+     to this:
+     
+     ```php
+     use Codepunk\Activatinator\SendsPasswordResetEmails;
+     ```
+     
+7. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
    
    Update the following:
      
@@ -134,7 +148,7 @@ convention.
      use Codepunk\Activatinator\AuthenticatesUsers;
      ```
 
-6. Make changes to `app/Http/Controllers/Auth/RegisterController.php`:
+8. Make changes to `app/Http/Controllers/Auth/RegisterController.php`:
    
    Update the following:
      
@@ -148,7 +162,7 @@ convention.
      use Codepunk\Activatinator\RegistersUsers;
      ```
 
-6. Make changes to `resources/views/auth/login.blade.php`:
+9. Make changes to `resources/views/auth/login.blade.php`:
    
    Find these lines:
    
