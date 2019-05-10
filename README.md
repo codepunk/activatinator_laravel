@@ -122,47 +122,30 @@ convention.
 
 6. Make changes to `app/Http/Controllers/Auth/LoginController.php`:
    
-   * Add the following `use` statement:
+   Update the following:
      
      ```php
-     use Codepunk\Activatinator\ActivatesUsers;
-     ```
-     
-   * Update the following:
-     
-     ```php
-     use AuthenticatesUsers;
+     use Illuminate\Foundation\Auth\AuthenticatesUsers;
      ```
      
      to this:
      
      ```php
-     use AuthenticatesUsers, ActivatesUsers {
-         ActivatesUsers::showLoginForm insteadof AuthenticatesUsers;
-         ActivatesUsers::authenticated insteadof AuthenticatesUsers;
-     }
+     use Codepunk\Activatinator\AuthenticatesUsers;
      ```
 
 6. Make changes to `app/Http/Controllers/Auth/RegisterController.php`:
    
-   * Add the following `use` statement:
+   Update the following:
      
      ```php
-     use Codepunk\Activatinator\SendsActivationEmails;
-     ```
-     
-   * Update the following:
-     
-     ```php
-     use RegistersUsers;
+     use Illuminate\Foundation\Auth\RegistersUsers;
      ```
      
      to this:
      
      ```php
-     use RegistersUsers, SendsActivationEmails {
-         SendsActivationEmails::registered insteadof RegistersUsers;
-     }
+     use Codepunk\Activatinator\RegistersUsers;
      ```
 
 6. Make changes to `resources/views/auth/login.blade.php`:
