@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 trait SendsActivationEmails
 {
+    public $headers = [ 'Content-Type' => 'application/json' ];
+
     /**
      * Get the post register redirect path.
      *
@@ -74,11 +76,7 @@ trait SendsActivationEmails
     protected function sendActivationLinkResponse(Request $request, $response)
     {
         if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                200,
-                [ 'Content-Type' => 'application/json' ]
-            );
+            return response()->json([ "message" => trans($response) ], 200, $this->headers);
         } else {
             $request->flashOnly('email');
             return redirect($this->redirectPath())
@@ -98,11 +96,7 @@ trait SendsActivationEmails
         $response)
     {
         if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                400,
-                [ 'Content-Type' => 'application/json' ]
-            );
+            return response()->json([ "message" => trans($response) ], 400, $this->headers);
         } else {
             return redirect($this->redirectPath())
                 ->withErrors(['email' => trans($response)]);

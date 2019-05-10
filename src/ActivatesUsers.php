@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 trait ActivatesUsers
 {
+
+    public $headers = [ 'Content-Type' => 'application/json' ];
+
     /**
      * Display the login view for the given token.
      *
@@ -118,12 +121,8 @@ trait ActivatesUsers
     protected function sendActivateFailedResponse(Request $request, $response)
     {
         auth()->logout();
-        if ($request->wantsJson()) {
-            return response()->json(
-                [ "message" => trans($response) ],
-                401,
-                [ 'Content-Type' => 'application/json' ]
-            );
+        if ($request->expectsJson()) {
+            return response()->json([ "message" => trans($response) ], 401, $this->headers);
         } else {
             return redirect()->route('login')
                 ->withInput($request->only('email'))
