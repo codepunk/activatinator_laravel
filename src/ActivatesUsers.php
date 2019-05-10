@@ -43,6 +43,7 @@ trait ActivatesUsers
                 // Attempt to resolve token and activate user
                 return $this->activate($request, $token);
             } else {
+                $request->merge(['email' => $user->email]);
                 return $this->sendActivateFailedResponse($request, Activatinator::INACTIVE);
             }
         }
