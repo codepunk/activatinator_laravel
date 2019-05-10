@@ -12,9 +12,9 @@ return [
     |
     */
 
-    'activate' => 'Log in now to activate your Codepunk account!',
+    'activate' => 'Your account is now active! Log in now to activate your Codepunk account.',
     'active' => 'Your account is now active!',
-    'inactive' => 'You need to activate your account. We sent you an activation code when you registered. ' .
+    'inactive_user' => 'You need to activate your account. We sent you an activation code when you registered. ' .
         'Please check your email.',
 
     // NOTE: Although the below message results from no user with the supplied email being found, we don't want to

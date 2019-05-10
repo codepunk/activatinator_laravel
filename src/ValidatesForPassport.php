@@ -6,7 +6,7 @@
  * Time: 1:58 PM
  */
 
-namespace Codepunk\Activatinator\Traits;
+namespace Codepunk\Activatinator;
 
 use Codepunk\Activatinator\Support\Facades\Activatinator;
 use Illuminate\Support\Facades\Hash;
@@ -44,9 +44,9 @@ trait ValidatesForPassport
             return true;
         } else {
             throw new OAuthServerException(
-                trans(Activatinator::INACTIVE),
+                trans(Activatinator::INACTIVE_USER),
                 9,
-                Activatinator::INACTIVE,
+                Activatinator::INACTIVE_USER,
                 401,
                 $this->email
             );
