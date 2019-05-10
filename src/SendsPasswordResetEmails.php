@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails as FrameworkSendsPasswor
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
-trait SendsPassportResetEmails
+trait SendsPasswordResetEmails
 {
     use FrameworkSendsPasswordResetEmails;
 
